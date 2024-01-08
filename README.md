@@ -1,13 +1,13 @@
 ### JAVA-EE---Web-Programming-
 
 
-## Project Guide :
+## Projects Guide :
 
 # IPL_Hibernate_CRUD
 
 ## Setting up Hibernate Project and Add / Update Operation
 
-1. Imported Maeven project with dependencies
+1. Imported Maven project with dependencies
 2. Edited hibernate.cfg.xml
 3. Write class HibernateUtils.java
 4. Write TestHibernate.java
