@@ -39,7 +39,6 @@ public class Team {
 
 	public Team(String name, String abbreviation, String ownerName, int maxAge, double battingAverage,
 			int wicketsTaken) {
-		super();
 		this.name = name;
 		this.abbreviation = abbreviation;
 		this.ownerName = ownerName;
@@ -48,7 +47,10 @@ public class Team {
 		this.wicketsTaken = wicketsTaken;
 	}
 
-
+	public Team(Long id, String abbreviation) {
+		this.id = id;
+		this.abbreviation = abbreviation;
+	}
 
 	public Long getId() {
 		return id;
