@@ -2,7 +2,7 @@
 
 # Project 1 : IPL (Hibernate)
 
-## Setting up Hibernate Project and Add / Insert Operation
+## Phase 1 : Setting up Hibernate Project and Add / Insert Operation
 (Understand Hibernate Architecture before proceeding)
 
 1. Imported Maven project with dependencies
@@ -19,7 +19,7 @@
 11. Run and test if it data is inserted into DB successfully!
 ### CREATE ^
 
-## Implementing other CRUD operations 
+## Phase 2 : Implementing other CRUD operations 
 (Understood Hibernate Entity Life Cycle : Transient, Persistent, Detached and Removed , before proceeding)
 
 1. Understand the code flow of creating Session Factory instance and getting the session and then Session methods like .save() previously, transaction commit() (internally calls session.flush() and session.close()) or rollback() and Exception handling by Hibernate at runtime in case of failure (Note - MySQL level errors, if any, handled by JDBC exceptions and further handled by Hibernate Exception as wrapper as mentioned in Hibernate Exception Java EE Docs) and associated Boiler plate code.
