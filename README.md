@@ -1,6 +1,6 @@
 ## Project Step-by-step Implementation :
 
-# Project 1 : IPL (Hibernate)
+# Project 1 : IPL (Hibernate + Dynamic Web Project using JSP and JSTL)
 
 ## Phase 1 : Setting up Hibernate Project and Add / Insert Operation
 (Understand Hibernate Architecture before proceeding)
