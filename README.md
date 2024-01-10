@@ -2,6 +2,7 @@
 
 # Project 1 : IPL (Hibernate)
 
+### Refer IPL_Hibernate_CRUD/ (Ignore /Dynamic Web Project with Hibernate for now)
 ## Phase 1 : Setting up Hibernate Project and Add / Insert Operation
 (Understand Hibernate Architecture before proceeding)
 
@@ -31,3 +32,25 @@
 5. Implement method :	public String updateMaxAgeAndBatAvgByTeamName(String name, int maxAge, double battingAvg) and corresponding tester class to test. Understand the .setParameter(), .getSingleResult() and setters used.
 ### UPDATE ^ 
 6. Implement method : public List<Team> sortByDescOrderOfMaxAgeDependingOnLessThanMaxAgeAndMinWickets(int maxAgeLimit, int minWicketsReq) and corresponding tester class to test. Understand writing complex queries and retrieving data.
+
+## Phase 3 - Transforming Hibernate Basic Project into Dynamic Web Project 
+
+### Now refer IPL_Hibernate_CRUD/Dynamic Web Project with Hibernate/
+
+1. Integrate previous hibernate project in a web app (Now we won’t use tester methods anymore in com.app.tester but call them from JSP pages to interact on browser)
+2. Add previously written entities in com.app.entities 
+3. Add previously written daos in com.app.daos 
+4. Here we used HibernateSFManager class in web_app_listeners that implements ServletContextListener so that session factory is created/initialised as soon as the application starts that is defined in contextInitialized() and gets destroyed when application is close that is defined in contextDestroyed() that are called implicitly. Session is created when DAO method is invoked and closed after transaction boundary is reached (as it internally calls session.close()).
+5. Drop table - teams in DB 
+6. Now modify POJOs / Entities to include Relationship
+7. Add BaseEntity that has common property id for Team entity and Player entity as they extend BaseEntity ( Inheritance ). Add @MappedSuperclass -> mandatory class level annotation to tell hibernate that this is a base class for other entities, do not create any table for it
+8. Add references : List<Player> playersList in Team entity and Team myTeam in Players entity  .
+9. Add corresponding getters and setters.
+10. Add annotation @OneToMany for playersList and @ManyToOne for myTeam to specify relationship [ So now Bi-directional relationship exists -> Team has players and Player is a part of Team ] 
+11. Now the problem is Hibernate will automatically create a third additional table which will have team_id and player_id so that it keeps a track of owning and non-owning fields of related table. So we explicitly specify it by using property mappedBy in @OneToMany and its value is set to name of the property as it appears in owning side of association. Thus, we added mappedBy in inverse (non-owning) side of association. (teams : one, parent, inverse (non owning side = FK on players table) AND players side: many, child, owning)
+12. Use @JoinColumn to specify myTeam as foreign key in Team entity ( Specifies a column for joining an entity association or element collection ). Here name property specifies corresponding table name and nullable = false so not null.
+13. In @OneToMany,  we used property cascade so that changes made in parent table should trigger changes to associated fields in child table.
+14. However, if we remove a Team, so it will have cascading effect on Players table but instead of delete, their parent reference will be updated to null. So they become orphan and persist in DB. To eliminate this problem (as the players should also get deleted if team is deleted), set orphanRemoval property to true (By default, it will be false).
+15. Now, modify web.xml to set index.jsp as entry point page of web application
+16. Write index.jsp which has link to form page that registers a player -> add_player_form.jsp. Create a Team bean, team_bean using useBean so that we can get all team details in session scope.
+17. Write add_player_form.jsp which takes player details as input and dynamically displays team abbreviation as dropdown using the team_bean of the session.
