@@ -34,7 +34,7 @@
 ### UPDATE ^ 
 6. Implement method : public List<Team> sortByDescOrderOfMaxAgeDependingOnLessThanMaxAgeAndMinWickets(int maxAgeLimit, int minWicketsReq) and corresponding tester class to test. Understand writing complex queries and retrieving data.
 
-## Phase 3 - Transforming Hibernate Basic Project into Dynamic Web Project 
+## Phase 3 : Transforming Hibernate Basic Project into Dynamic Web Project 
 
 ### Now refer IPL_Hibernate_CRUD/Dynamic Web Project with Hibernate/
 
