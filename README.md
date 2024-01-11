@@ -1,6 +1,6 @@
 ## Project Step-by-step Implementation :
 
-# Project 1 : IPL (Hibernate + Dynamic Web Project using JSP and JSTL)
+# Project 1 : IPL (Hibernate + Web Maven Project using JSP and JSTL)
 
 ## Phase 1 : Setting up Hibernate Project and Add / Insert Operation
 (Understand Hibernate Architecture before proceeding)
@@ -34,11 +34,11 @@
 ### UPDATE ^ 
 6. Implement method : public List<Team> sortByDescOrderOfMaxAgeDependingOnLessThanMaxAgeAndMinWickets(int maxAgeLimit, int minWicketsReq) and corresponding tester class to test. Understand writing complex queries and retrieving data.
 
-## Phase 3 : Transforming Hibernate Basic Project into Dynamic Web Project 
+## Phase 3 : Transforming Hibernate Basic Project into Web Project 
 
 ### Now refer IPL_Hibernate_CRUD/Dynamic Web Project with Hibernate/
 
-1. Integrate previous hibernate project in a web app (Now we won’t use tester methods anymore in com.app.tester but call them from JSP pages to interact on browser)
+1. Integrate previous hibernate project in a web maven project (Now we won’t use tester methods anymore in com.app.tester but call them from JSP pages to interact on browser)
 2. Add previously written entities in com.app.entities 
 3. Add previously written daos in com.app.daos 
 4. Here we used HibernateSFManager class in web_app_listeners that implements ServletContextListener so that session factory is created/initialised as soon as the application starts that is defined in contextInitialized() and gets destroyed when application is close that is defined in contextDestroyed() that are called implicitly. Session is created when DAO method is invoked and closed after transaction boundary is reached (as it internally calls session.close()).
