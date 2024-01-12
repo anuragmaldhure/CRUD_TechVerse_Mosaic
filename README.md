@@ -55,3 +55,18 @@
 15. Now, modify web.xml to set index.jsp as entry point page of web application
 16. Write index.jsp which has link to form page that registers a player -> add_player_form.jsp. Create a Team bean, team_bean using useBean so that we can get all team details in session scope.
 17. Write add_player_form.jsp which takes player details as input and dynamically displays team abbreviation as dropdown using the team_bean of the session.
+
+## Phase 4 - Completing Player Registration after proper validations
+
+1. Modify index.jsp to add Player bean state, player_bean, using useBean so that we can get player details from user in session scope.
+<jsp:useBean id = "player_bean" class="com.app.beans.PlayerBean" scope="session"/>
+2. Write Player bean class with constructor for initialising Player as well as Team DAO ( note that the date we get is in string form )
+3. Write Player DAO interface, PlayerDao and its implementation class, PlayerDaoImp, and write method addPlayerToTeam(Integer teamId, Player newPlayer) to add a player to the team in DB and returns suitable message upon success or failure.
+4. Add a Business Logic method in Player Bean, validateAndAddPlayer() to get valid team and then perform age and batting average validations of the player details input by user and add it to DB by method addPlayerToTeam() of PlayerDao ( Note date conversion needs to be handled string date conversion to LocalDate and getting the year difference by Period.between(date, LocalDate.now()).getYears() ).
+5. Form in add_player_form.jsp posts the data to process_form.jsp. Also note that PlayerBean fields and add_player_form.jsp input fields should be exactly same and setters required in Player bean for data biding from form in jsp(view).
+6. In process_form.jsp, set all form inputs into Player bean and to invoke matching setters, use <jsp:setProperty property="*" name="player_bean"/>
+7. Here, invoke B.L. method, by EL syntax, of player bean to add new player that validates the player and also the team and gives suitable string response that should be displayed in JSP upon success or failure. Thus, registration is successful.
+
+## Further possible mods:
+1. Centralised error handling can be introduced.
+2. One to One relationship can be demonstrated by Team’s  Owner —> Team (So one more table can be introduced for Team owner which has reference in Team table’s owner attribute)

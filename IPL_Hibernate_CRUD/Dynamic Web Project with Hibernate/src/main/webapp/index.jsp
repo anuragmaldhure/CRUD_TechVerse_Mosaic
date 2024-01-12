@@ -9,6 +9,7 @@
 </head>
 <%-- create team bean --%>
 <jsp:useBean id = "team_bean" class="com.app.beans.TeamBean" scope="session"/>
+<jsp:useBean id = "player_bean" class="com.app.beans.PlayerBean" scope="session"/>
 
 <body>
 	<h3> Welcome 2 Web App with Hibernate @ <%= new Date() %></h3>

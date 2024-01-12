@@ -69,7 +69,7 @@ public class TeamDaoImp implements TeamDao {
 	}
 
 	@Override
-	public String deleteTeamDetails(Long id) {
+	public String deleteTeamDetails(Integer id) {
 		Team teamToDelete=null;
 		String mesg="deleting team details failed !!!!";
 		// 1. Get session from SF
@@ -96,7 +96,7 @@ public class TeamDaoImp implements TeamDao {
 	}//teamToDelete : marked for GC
 
 	@Override
-	public Team getTeamDetailsByTeamId(Long teamId) {
+	public Team getTeamDetailsByTeamId(Integer teamId) {
 		Team team = null;// emp : does not exist in heap !
 		// 1. Get session from SF
 		Session session = getFactory().getCurrentSession();

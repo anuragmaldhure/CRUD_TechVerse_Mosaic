@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Add Player</title>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
 		<table style="background-color: lightgrey; margin: auto">
 			<tr>
 				<td>Select Team</td>
-				<td><select name="teaId">
+				<td><select name="teamId">
 						<c:forEach var="team"
 							items="${sessionScope.team_bean.teamDetails}">
 							<option value="${team.id}">${team.abbreviation}</option>

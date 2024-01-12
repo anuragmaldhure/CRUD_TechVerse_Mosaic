@@ -12,12 +12,12 @@ public interface TeamDao {
 	List<Team> getAllTeamIdsAndAbbreviations();
 	
 	//Delete team details   ->   i/p : team id
-	String deleteTeamDetails(Long id);
+	String deleteTeamDetails(Integer id);
 	
 	//Display team details by specified team id
 	//	i/p : team id
 	//	o/p : team details or null
-	Team getTeamDetailsByTeamId(Long teamId);
+	Team getTeamDetailsByTeamId(Integer teamId);
 	
 	//	Update max age n batting avg requirement of a specific 
 	//	team by it's name (team name is unique)
