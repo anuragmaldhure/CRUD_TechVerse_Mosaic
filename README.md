@@ -1,4 +1,4 @@
-## Project Step-by-step Implementation :
+## Project Implementations Guide :
 
 # Project 1 : IPL (Hibernate + Web Maven Project using JSP and JSTL)
 
