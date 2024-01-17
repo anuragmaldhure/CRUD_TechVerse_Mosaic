@@ -13,7 +13,7 @@
 
 ##### Refer IPL_Hibernate_CRUD/ (Ignore /Dynamic Web Project with Hibernate for now)
 
-1. Imported Maven project with dependencies
+1. Created / Imported Maven project with dependencies
 2. Edited hibernate.cfg.xml
 3. Write class HibernateUtils.java
 4. Write TestHibernate.java
