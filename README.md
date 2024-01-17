@@ -6,7 +6,7 @@
 * [Project 1](#project-1)
 
 ## Project 1 
-### IPL (Hibernate + Web Maven Project using JSP and JSTL)
+### IPL (JAVA EE : Hibernate + Web Maven Project using JSP and JSTL)
 
 #### Phase 1 : Setting up Hibernate Project and Add / Insert Operation
 (Understand Hibernate Architecture before proceeding)
