@@ -1,11 +1,17 @@
-## Project Implementations Guide :
+# CRUD demonstrations in different tech stacks using sample projects that I created for understanding the concepts across the Tech-Verse:
+* I have also written briefly step by step implementation guide for my understanding and you can also go through it if it adds any value to your knowledge 
+* Also if you find it useful, do **star (this repository)** to show appreciation, bookmark for your reference and receive updates :)
 
-# Project 1 : IPL (Hibernate + Web Maven Project using JSP and JSTL)
+## Table of contents
+* [Project 1](#project-1)
 
-## Phase 1 : Setting up Hibernate Project and Add / Insert Operation
+## Project 1 
+### IPL (Hibernate + Web Maven Project using JSP and JSTL)
+
+#### Phase 1 : Setting up Hibernate Project and Add / Insert Operation
 (Understand Hibernate Architecture before proceeding)
 
-### Refer IPL_Hibernate_CRUD/ (Ignore /Dynamic Web Project with Hibernate for now)
+##### Refer IPL_Hibernate_CRUD/ (Ignore /Dynamic Web Project with Hibernate for now)
 
 1. Imported Maven project with dependencies
 2. Edited hibernate.cfg.xml
@@ -19,24 +25,24 @@
 9. Write TeamDAOImp (implementation of TeamDAO) class
 10. Write AddNewTeam.java to call add new team (insert into DB) method of TeamDAOIMp
 11. Run and test if it data is inserted into DB successfully!
-### CREATE ^
+##### CREATE ^
 
-## Phase 2 : Implementing other CRUD operations 
+#### Phase 2 : Implementing other CRUD operations 
 (Understood Hibernate Entity Life Cycle : Transient, Persistent, Detached and Removed , before proceeding)
 
 1. Understand the code flow of creating Session Factory instance and getting the session and then Session methods like .save() previously, transaction commit() (internally calls session.flush() and session.close()) or rollback() and Exception handling by Hibernate at runtime in case of failure (Note - MySQL level errors, if any, handled by JDBC exceptions and further handled by Hibernate Exception as wrapper as mentioned in Hibernate Exception Java EE Docs) and associated Boiler plate code.
 2. Implement method :	public List<Team> getAllTeamIdsAndAbbreviations() and corresponding tester class to test. Understand the JPQL (can also be HQL instead) and .createQuery() and .getResultList()
-### READ ^
+##### READ ^
 3. Implement method :	public Team getTeamDetailsByTeamId(Long teamId) and corresponding tester class to test. Understand the .get()
 4. Implement method :	public String deleteTeamDetails(Long id) and corresponding tester class to test. Understand the .delete()
-### DELETE ^
+##### DELETE ^
 5. Implement method :	public String updateMaxAgeAndBatAvgByTeamName(String name, int maxAge, double battingAvg) and corresponding tester class to test. Understand the .setParameter(), .getSingleResult() and setters used.
-### UPDATE ^ 
+##### UPDATE ^ 
 6. Implement method : public List<Team> sortByDescOrderOfMaxAgeDependingOnLessThanMaxAgeAndMinWickets(int maxAgeLimit, int minWicketsReq) and corresponding tester class to test. Understand writing complex queries and retrieving data.
 
-## Phase 3 : Transforming Hibernate Basic Project into Web Project 
+#### Phase 3 : Transforming Hibernate Basic Project into Web Project 
 
-### Now refer IPL_Hibernate_CRUD/Dynamic Web Project with Hibernate/
+##### Now refer IPL_Hibernate_CRUD/Dynamic Web Project with Hibernate/
 
 1. Integrate previous hibernate project in a web maven project (Now we won’t use tester methods anymore in com.app.tester but call them from JSP pages to interact on browser)
 2. Add previously written entities in com.app.entities 
@@ -56,7 +62,7 @@
 16. Write index.jsp which has link to form page that registers a player -> add_player_form.jsp. Create a Team bean, team_bean using useBean so that we can get all team details in session scope.
 17. Write add_player_form.jsp which takes player details as input and dynamically displays team abbreviation as dropdown using the team_bean of the session.
 
-## Phase 4 - Completing Player Registration after proper validations
+#### Phase 4 - Completing Player Registration after proper validations
 
 1. Modify index.jsp to add Player bean state, player_bean, using useBean so that we can get player details from user in session scope.
 <jsp:useBean id = "player_bean" class="com.app.beans.PlayerBean" scope="session"/>
@@ -67,6 +73,6 @@
 6. In process_form.jsp, set all form inputs into Player bean and to invoke matching setters, use <jsp:setProperty property="*" name="player_bean"/>
 7. Here, invoke B.L. method, by EL syntax, of player bean to add new player that validates the player and also the team and gives suitable string response that should be displayed in JSP upon success or failure. Thus, registration is successful.
 
-## Further possible mods:
+#### Further possible mods:
 1. Centralised error handling can be introduced.
 2. One to One relationship can be demonstrated by Team’s  Owner —> Team (So one more table can be introduced for Team owner which has reference in Team table’s owner attribute)
