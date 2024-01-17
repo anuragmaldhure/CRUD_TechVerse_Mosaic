@@ -11,7 +11,7 @@
 #### Phase 1 : Setting up Hibernate Project and Add / Insert Operation
 (Understand Hibernate Architecture before proceeding)
 
-##### Refer IPL_Hibernate_CRUD/ (Ignore /Dynamic Web Project with Hibernate for now)
+##### Refer IPL_Hibernate_CRUD/ (Ignore IPL_Hibernate_CRUD/Dynamic Web Project with Hibernate for now)
 
 1. Created / Imported Maven project with dependencies
 2. Edited hibernate.cfg.xml
