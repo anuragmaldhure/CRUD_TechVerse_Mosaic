@@ -2,49 +2,62 @@ package com.app.entities;
 
 import java.time.LocalDate;
 
-//all specs Java EE supplied
-/*
- *   <tr key={employee.id}>
-                <td>{employee.firstName}</td>
-                <td>{employee.lastName}</td>
-                <td>{employee.email}</td>
-                <td>{employee.location}</td>
-                <td>{employee.department}</td>
-                <td>{employee.joinDate}</td>
-                <td>{employee.salary}</td>
-                <td>
- */
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "new_emps") // to specify table name
+@Table(name = "emps")
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = "password", callSuper = true)
+@ToString(callSuper = true, exclude = { "dept", "card" })
 public class Employee extends BaseEntity {
-
-	@Column(length = 20) // varchar(20)
+	@Column(length = 20)
 	private String firstName;
 	@Column(length = 20)
 	private String lastName;
-	@Column(length = 30, unique = true) // unique constraint
+	@Column(length = 20, unique = true)
 	private String email;
-	@Column(length = 20, nullable = false) // NOT NULL constraint
+	@Column(length = 25, nullable = false)
 	private String password;
 	private LocalDate joinDate;
+	@Enumerated(EnumType.STRING) // varchar
+	@Column(length = 20)
+	private EmploymentType empType;
 	private double salary;
-	@Column(length = 30)
-	private String location;
-	@Column(length = 30)
-	private String department;
+	@Lob
+	private byte[] image;
+	private String imagePath;// This will be used for storing n restoring images in server side folder
+	// Employee *--->1 Department
+	@ManyToOne
+	@JoinColumn(name = "department_id", nullable = false)
+	private Department dept;
+	// Emp HAS-A AdhaarCard(Emp 1--->1 AdhaarCard) : strong asso (composition)
+	@Embedded // optional annotation
+	private AdhaarCard card;
+
+	public Employee(String firstName, String lastName, String email, String password, LocalDate joinDate,
+			EmploymentType empType, double salary) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.joinDate = joinDate;
+		this.empType = empType;
+		this.salary = salary;
+	}
+
 }
